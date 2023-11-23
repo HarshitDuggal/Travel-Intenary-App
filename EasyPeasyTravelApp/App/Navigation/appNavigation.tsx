@@ -1,13 +1,17 @@
 //dependencies import
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useIsFocused } from '@react-navigation/native';
 
 // Screens import
 import Chart from '../Screens/Chart';
 import Guide from '../Screens/Guide';
 import Home from '../Screens/Home';
 import Wallet from '../Screens/Wallet';
+
+//import icon & styles
+import { ChartIcon,GuideIcon,HomeIcon,WalletIcon } from '../Constants/assets';
+import { style } from './appNavigationStylesheet';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -22,11 +26,24 @@ const MainStack = () => {
 
 const TabNavigation = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" options={{headerShown:false}} component={MainStack} />
-      <Tab.Screen name="Chart" options={{headerShown:false}} component={Chart} />
-      <Tab.Screen name="Itenary Form" options={{headerShown:true, tabBarLabel:'Guide'}} component={Guide} />
-      <Tab.Screen name="Wallet" options={{headerShown:false}}component={Wallet} />
+    <Tab.Navigator screenOptions={{tabBarHideOnKeyboard:true , tabBarStyle:style.bottomTabStyle}} >
+      <Tab.Screen name="Home" options={{headerShown:false, tabBarIcon: () => {
+        const isFocused = useIsFocused();
+        return HomeIcon(isFocused)
+      }}} component={MainStack} />
+      <Tab.Screen name="Wallet" options={{headerShown:false,tabBarIcon: () => {
+        const isFocused = useIsFocused();
+        return WalletIcon(isFocused)
+      }}}component={Wallet} />
+      
+      <Tab.Screen name="Itenary Form" options={{headerShown:true, tabBarLabel:'Guide',tabBarIcon: () => {
+        const isFocused = useIsFocused();
+        return GuideIcon(isFocused)
+      }}} component={Guide} />
+      <Tab.Screen name="Chart" options={{headerShown:false ,tabBarIcon: () => {
+        const isFocused = useIsFocused();
+        return ChartIcon(isFocused)
+      }}} component={Chart} />
     </Tab.Navigator>
   );
 };
