@@ -1,7 +1,9 @@
 //colors used
 export const Colors = {
     iconPrimary:'#0373F3',
-    iconSecondary:'#BCBCBC'
+    iconSecondary:'#BCBCBC',
+    white:'#ffffff',
+    black:'#000000'
 }
 
 //sizes used

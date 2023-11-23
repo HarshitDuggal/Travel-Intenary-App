@@ -6,5 +6,6 @@ export const style = StyleSheet.create({
     borderTopLeftRadius: 24,
     height: 70,
     position: 'absolute',
+    
   },
 });

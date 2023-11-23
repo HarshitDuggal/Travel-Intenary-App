@@ -36,7 +36,7 @@ const TabNavigation = () => {
         return WalletIcon(isFocused)
       }}}component={Wallet} />
       
-      <Tab.Screen name="Itenary Form" options={{headerShown:true, tabBarLabel:'Guide',tabBarIcon: () => {
+      <Tab.Screen name="Itenary Form" options={{headerShown:false, tabBarLabel:'Guide',tabBarIcon: () => {
         const isFocused = useIsFocused();
         return GuideIcon(isFocused)
       }}} component={Guide} />

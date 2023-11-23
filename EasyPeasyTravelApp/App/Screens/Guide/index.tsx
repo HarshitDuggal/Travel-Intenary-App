@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import Topbar from '../../Components/TopBar'
 
 const Guide = () => {
   return (
     <View>
-      <Text>Guide</Text>
+      <Topbar/>
     </View>
   )
 }
