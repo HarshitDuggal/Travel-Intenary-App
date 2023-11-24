@@ -2,6 +2,7 @@ import {View, Text} from 'react-native';
 import Button from '../Button';
 import {style} from './topBarStylesheet';
 import {useState} from 'react';
+
 const Topbar = () => {
   const [activeButton, setActiveButton] = useState('Today');
   const handleButton = (buttonName: string) => {

@@ -20,6 +20,8 @@
     "react-native-reanimated": "^3.5.4",
     "react-native-safe-area-context": "^4.7.4",
     "react-native-screens": "^3.27.0",
+    "react-native-step-indicator": "^1.0.3",
+    "react-native-timeline-flatlist": "^0.8.0",
     "react-native-vector-icons": "^10.0.2"
   },
   "devDependencies": {
