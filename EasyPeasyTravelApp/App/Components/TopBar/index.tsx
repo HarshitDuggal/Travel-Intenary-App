@@ -1,24 +1,31 @@
 import {View, Text} from 'react-native';
 import Button from '../Button';
 import {style} from './topBarStylesheet';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {dayChange} from '../../Redux/Slices/daySlice';
 
 const Topbar = () => {
   const [activeButton, setActiveButton] = useState('Today');
+
+  const dispatch = useDispatch();
+
   const handleButton = (buttonName: string) => {
-    console.log('This is clicking');
     setActiveButton(buttonName);
   };
+
+  useEffect(() => {
+    dispatch(dayChange(activeButton));
+  }, [activeButton]);
 
   const date = new Date();
 
   let day = date.getDate();
-  const month = date.toLocaleString('default', { month: 'long' });
+  const month = date.toLocaleString('default', {month: 'long'});
 
-  
   const dateToday = `${day} ${month}`;
-  const dateTomorrow = `${day + 1} ${month }`;
-  const dateYesterday = `${day - 1} ${month }`;
+  const dateTomorrow = `${day + 1} ${month}`;
+  const dateYesterday = `${day - 1} ${month}`;
 
   return (
     <View style={style.container}>

@@ -1,8 +1,12 @@
 import * as React from 'react';
-import {StyleSheet, View, Text, FlatList, Image} from 'react-native';
+import {View, Text, FlatList, Image} from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 import dummyData from './data';
 import {Colors} from '../../Constants/theme';
+import { useSelector } from 'react-redux';
+import { selectActiveDay } from '../../Redux/Slices/daySlice';
+import { styles } from './itenaryStylesheet';
+import { useEffect } from 'react';
 
 const stepIndicatorStyles = {
   stepIndicatorSize: 30,
@@ -26,9 +30,39 @@ const stepIndicatorStyles = {
 };
 
 
+  
 
 export default function VerticalStepIndicator() {
   const [currentProgress, setCurrentProgress] = React.useState<number>(0);
+
+  const calculatePercentage = (time) => {
+    const [hours, minutes] = time.split(':').map(Number);
+
+    const totalMinutes = hours * 60 + minutes;
+    const totalMinutesMidnight = 23 * 60 + 58; // 23:59 in minutes
+    const final = (totalMinutes / totalMinutesMidnight) * 3;
+
+    setCurrentProgress(final);
+  };
+
+  const activeDay = useSelector(selectActiveDay);
+
+  useEffect(() => {
+    if(activeDay === 'Today'){
+      const dateCurrent = new Date();
+      const currentHour = dateCurrent.getHours();
+      const currentMinutes = dateCurrent.getMinutes();
+      const time = `${currentHour}:${currentMinutes}`;
+      calculatePercentage(time);
+    } else if(activeDay === 'Yesterday'){
+      setCurrentProgress(4);
+    } else if(activeDay === 'Tomorrow'){
+      setCurrentProgress(0);
+    }
+  },[activeDay])
+  
+
+
   const viewabilityConfig = React.useRef({
     itemVisiblePercentThreshold: 40,
   }).current;
@@ -51,22 +85,9 @@ export default function VerticalStepIndicator() {
     );
   };
 
-  const dateCurrent = new Date();
-  const currentHour = dateCurrent.getHours();
-  const currentMinutes = dateCurrent.getMinutes();
-  const time = `${currentHour}:${currentMinutes}`;
-  const calculatePercentage = () => {
-    const [hours, minutes] = time.split(':').map(Number);
-
-    const totalMinutes = hours * 60 + minutes;
-    const totalMinutesMidnight = 23 * 60 + 58; // 23:59 in minutes
-    const final = (totalMinutes / totalMinutesMidnight) * 3;
-
-    setCurrentProgress(final);
-  };
-  React.useEffect(() => {
-    calculatePercentage();
-  }, []);
+  
+  
+  
   return (
     <View style={styles.container}>
       <FlatList
@@ -96,43 +117,4 @@ export default function VerticalStepIndicator() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  stepIndicator: {
-    marginTop: 5,
-    marginVertical: 50,
-    paddingHorizontal: 20,
-  },
-  rowItem: {
-    flex: 3,
-    paddingVertical: 32,
-    padding: 10,
-  },
-  title: {
-    flex: 1,
-    fontFamily:'Poppins',
-    fontSize: 18,
-    color: Colors.black,
-    paddingVertical: 16,
-    fontWeight: '400',
-  },
-  body: {
-    flex: 1,
-    fontSize: 15,
-    color: '#606060',
-    lineHeight: 24,
-    marginRight: 8,
-  },
-  timeList: {
-    marginLeft: 5,
-    width: 70,
-    marginTop: 15,
-  },
-  descriptionList: {
-    marginTop: 15,
-    padding: 8,
-  },
-});
+
