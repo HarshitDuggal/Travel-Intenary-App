@@ -1,4 +1,5 @@
 import {GestureResponderEvent, Text, TouchableOpacity} from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 interface ButtonProps {
   headerText: string;
@@ -16,7 +17,7 @@ interface ButtonProps {
 
 const Button = ({headerText, subText, onPress, style}: ButtonProps) => (
   <TouchableOpacity onPress={onPress} style={style}>
-    <Text>{headerText}</Text>
+    <Text style={{color:Colors.black}}>{headerText}</Text>
     <Text>{subText}</Text>
   </TouchableOpacity>
 );

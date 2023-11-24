@@ -1,28 +1,31 @@
 import * as React from 'react';
-import {StyleSheet, View, Text, FlatList} from 'react-native';
+import {StyleSheet, View, Text, FlatList, Image} from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 import dummyData from './data';
+import {Colors} from '../../Constants/theme';
 
 const stepIndicatorStyles = {
   stepIndicatorSize: 30,
   currentStepIndicatorSize: 40,
   separatorStrokeWidth: 3,
   currentStepStrokeWidth: 5,
-  stepStrokeCurrentColor: '#fe7013',
-  separatorFinishedColor: '#fe7013',
-  separatorUnFinishedColor: '#aaaaaa',
-  stepIndicatorFinishedColor: '#fe7013',
-  stepIndicatorUnFinishedColor: '#aaaaaa',
-  stepIndicatorCurrentColor: '#ffffff',
+  stepStrokeCurrentColor: Colors.progressBarBlue,
+  separatorFinishedColor: Colors.progressBarBlue,
+  separatorUnFinishedColor: Colors.unfinished,
+  stepIndicatorFinishedColor: Colors.progressBarBlue,
+  stepIndicatorUnFinishedColor: Colors.unfinished,
+  stepIndicatorCurrentColor: Colors.white,
   stepIndicatorLabelFontSize: 15,
   currentStepIndicatorLabelFontSize: 15,
-  stepIndicatorLabelCurrentColor: '#000000',
-  stepIndicatorLabelFinishedColor: '#ffffff',
+  stepIndicatorLabelCurrentColor: Colors.black,
+  stepIndicatorLabelFinishedColor: Colors.white,
   stepIndicatorLabelUnFinishedColor: 'rgba(255,255,255,0.5)',
   labelColor: '#666666',
   labelSize: 15,
-  currentStepLabelColor: '#fe7013',
+  currentStepLabelColor: Colors.progressBarBlue,
 };
+
+
 
 export default function VerticalStepIndicator() {
   const [currentProgress, setCurrentProgress] = React.useState<number>(0);
@@ -38,11 +41,12 @@ export default function VerticalStepIndicator() {
       </View>
     );
   };
+ 
   const renderPage2 = (rowData: any) => {
     const item = rowData.item;
     return (
       <View style={styles.rowItem}>
-        <Text style={styles.body}>{item.body}</Text>
+         <Image source={item.image}  style={styles.descriptionList}/>
       </View>
     );
   };
@@ -78,7 +82,7 @@ export default function VerticalStepIndicator() {
           stepCount={4}
           direction="vertical"
           currentPosition={currentProgress}
-          labels={dummyData.data.map(item => item.title)}
+          labels={dummyData.data.map(item => `\n${item.title}\n\n${item.body}`)}
         />
       </View>
 
@@ -86,7 +90,6 @@ export default function VerticalStepIndicator() {
         style={styles.descriptionList}
         data={dummyData.data}
         renderItem={renderPage2}
-        // onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
       />
     </View>
@@ -99,22 +102,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   stepIndicator: {
-    marginTop:5,
+    marginTop: 5,
     marginVertical: 50,
     paddingHorizontal: 20,
   },
   rowItem: {
     flex: 3,
     paddingVertical: 32,
-    padding:10,
-    
+    padding: 10,
   },
   title: {
     flex: 1,
-    fontSize: 20,
-    color: '#333333',
+    fontFamily:'Poppins',
+    fontSize: 18,
+    color: Colors.black,
     paddingVertical: 16,
-    fontWeight: '600',
+    fontWeight: '400',
   },
   body: {
     flex: 1,
@@ -124,14 +127,12 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   timeList: {
-    marginVertical: 50,
     marginLeft: 5,
     width: 70,
-    marginTop:15,
+    marginTop: 15,
   },
-  descriptionList:{
-    width: 100,
-    marginTop:15,
-    padding:8,    
-  }
+  descriptionList: {
+    marginTop: 15,
+    padding: 8,
+  },
 });

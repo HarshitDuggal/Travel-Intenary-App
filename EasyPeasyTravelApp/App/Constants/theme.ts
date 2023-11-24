@@ -4,7 +4,9 @@ export const Colors = {
     iconSecondary:'#BCBCBC',
     white:'#ffffff',
     black:'#000000',
-    grey:'gray'
+    grey:'gray',
+    progressBarBlue:'#0373F3',
+    unfinished:'#aaaaaa',
 }
 
 //sizes used
