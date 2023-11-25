@@ -23,9 +23,9 @@ const Topbar = () => {
   let day = date.getDate();
   const month = date.toLocaleString('default', {month: 'long'});
 
-  const dateToday = `${day} ${month}`;
-  const dateTomorrow = `${day + 1} ${month}`;
-  const dateYesterday = `${day - 1} ${month}`;
+  const dateToday = `${day} ${month.slice(0,3)}`;
+  const dateTomorrow = `${day + 1} ${month.slice(0,3)}`;
+  const dateYesterday = `${day - 1} ${month.slice(0,3)}`;
 
   return (
     <View style={style.container}>

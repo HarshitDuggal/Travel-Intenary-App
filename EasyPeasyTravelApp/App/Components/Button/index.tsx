@@ -17,8 +17,8 @@ interface ButtonProps {
 
 const Button = ({headerText, subText, onPress, style}: ButtonProps) => (
   <TouchableOpacity onPress={onPress} style={style}>
-    <Text style={{color:Colors.black}}>{headerText}</Text>
-    <Text>{subText}</Text>
+    <Text style={{color:Colors.black,fontFamily:'Poppins-SemiBold',fontSize:18}}>{headerText}</Text>
+    <Text style={{color:Colors.subHeading ,fontFamily:'Poppins',fontSize:16}}>{subText}</Text>
   </TouchableOpacity>
 );
 
