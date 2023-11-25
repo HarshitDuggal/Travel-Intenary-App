@@ -13,7 +13,13 @@ const HomeIcon = (isFocused: boolean) => {
         color={isFocused ? Colors.iconPrimary : Colors.iconSecondary}
         size={Sizes.iconSize}
       />
-      <Text style={{color:isFocused?Colors.iconPrimary:Colors.grey}}>Home</Text>
+      <Text
+        style={{
+          color: isFocused ? Colors.iconPrimary : Colors.grey,
+          fontFamily: 'Poppins-Medium',
+        }}>
+        Home
+      </Text>
     </View>
   );
 };
@@ -26,7 +32,13 @@ const WalletIcon = (isFocused: boolean) => {
         color={isFocused ? Colors.iconPrimary : Colors.iconSecondary}
         size={Sizes.iconSize}
       />
-      <Text style={{color:isFocused?Colors.iconPrimary:Colors.grey}}>Wallet</Text>
+      <Text
+        style={{
+          color: isFocused ? Colors.iconPrimary : Colors.grey,
+          fontFamily: 'Poppins-Medium',
+        }}>
+        Wallet
+      </Text>
     </View>
   );
 };
@@ -39,7 +51,13 @@ const GuideIcon = (isFocused: boolean) => {
         color={isFocused ? Colors.iconPrimary : Colors.iconSecondary}
         size={Sizes.iconSize}
       />
-      <Text style={{color:isFocused?Colors.iconPrimary:Colors.grey}}>Guide</Text>
+      <Text
+        style={{
+          color: isFocused ? Colors.iconPrimary : Colors.grey,
+          fontFamily: 'Poppins-Medium',
+        }}>
+        Guide
+      </Text>
     </View>
   );
 };
@@ -52,7 +70,13 @@ const ChartIcon = (isFocused: boolean) => {
         color={isFocused ? Colors.iconPrimary : Colors.iconSecondary}
         size={Sizes.iconSize}
       />
-      <Text style={{color:isFocused?Colors.iconPrimary:Colors.grey}}>Chart</Text>
+      <Text
+        style={{
+          color: isFocused ? Colors.iconPrimary : Colors.grey,
+          fontFamily: 'Poppins-Medium',
+        }}>
+        Chart
+      </Text>
     </View>
   );
 };

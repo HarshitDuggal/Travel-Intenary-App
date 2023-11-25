@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer, useIsFocused} from '@react-navigation/native';
 
+
 // Screens import
 import Chart from '../Screens/Chart';
 import Guide from '../Screens/Guide';
@@ -13,13 +14,17 @@ import Wallet from '../Screens/Wallet';
 import {ChartIcon, GuideIcon, HomeIcon, WalletIcon} from '../Constants/assets';
 import {style} from './appNavigationStylesheet';
 
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+
 
 const MainStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="HomeScreen" component={Home} />
+      <Stack.Screen name="ItenaryForm" component={Guide} />
     </Stack.Navigator>
   );
 };
@@ -56,7 +61,7 @@ const TabNavigation = () => {
       />
 
       <Tab.Screen
-        name="Itenary Form"
+        name="Guide"
         options={{
           headerShown: false,
           tabBarIcon: () => {
@@ -82,6 +87,7 @@ const TabNavigation = () => {
 };
 
 const AppNavigation = () => {
+
   return (
     <NavigationContainer>
       <TabNavigation />

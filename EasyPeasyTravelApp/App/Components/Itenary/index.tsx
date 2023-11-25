@@ -35,7 +35,7 @@ const stepIndicatorStyles = {
 export default function VerticalStepIndicator() {
   const [currentProgress, setCurrentProgress] = React.useState<number>(0);
 
-  const calculatePercentage = (time) => {
+  const calculatePercentage = (time: string) => {
     const [hours, minutes] = time.split(':').map(Number);
 
     const totalMinutes = hours * 60 + minutes;
@@ -67,7 +67,7 @@ export default function VerticalStepIndicator() {
     itemVisiblePercentThreshold: 40,
   }).current;
 
-  const renderPage = (rowData: any) => {
+  const timeList = (rowData: any) => {
     const item = rowData.item;
     return (
       <View style={styles.rowItem}>
@@ -76,7 +76,7 @@ export default function VerticalStepIndicator() {
     );
   };
  
-  const renderPage2 = (rowData: any) => {
+  const weatherIcons = (rowData: any) => {
     const item = rowData.item;
     return (
       <View style={styles.rowItem}>
@@ -93,8 +93,7 @@ export default function VerticalStepIndicator() {
       <FlatList
         style={styles.timeList}
         data={dummyData.data}
-        renderItem={renderPage}
-        // onViewableItemsChanged={onViewableItemsChanged}
+        renderItem={timeList} 
         viewabilityConfig={viewabilityConfig}
       />
       <View style={styles.stepIndicator}>
@@ -110,7 +109,7 @@ export default function VerticalStepIndicator() {
       <FlatList
         style={styles.descriptionList}
         data={dummyData.data}
-        renderItem={renderPage2}
+        renderItem={weatherIcons}
         viewabilityConfig={viewabilityConfig}
       />
     </View>

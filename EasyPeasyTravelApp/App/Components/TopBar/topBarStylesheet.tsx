@@ -10,8 +10,7 @@ export const style = StyleSheet.create({
     fontSize: 24,
     color: Colors.black,
     marginTop: 64,
-    fontFamily: 'Poppins',
-    fontWeight: '600',
+    fontFamily: 'Poppins-SemiBold',
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -22,9 +21,12 @@ export const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 5,
+    paddingBottom:4
   },
   activeButton: {
-    borderBottomWidth: 1,
+    paddingBottom: 0,
+    borderBottomWidth: 2,
     borderBottomColor: 'blue',
+    marginBottom: -4,
   },
 });

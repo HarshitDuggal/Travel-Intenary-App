@@ -1,11 +1,11 @@
-import { View, Text } from 'react-native'
+import {View, Text} from 'react-native';
 
 const Chart = () => {
   return (
-    <View>
-      <Text>Chart</Text>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text style={{textAlign: 'center', fontFamily: 'Poppins-SemiBold'}}>Chart</Text>
     </View>
-  )
-}
+  );
+};
 
 export default Chart;

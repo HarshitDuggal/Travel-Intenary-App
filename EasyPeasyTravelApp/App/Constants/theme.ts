@@ -7,10 +7,11 @@ export const Colors = {
     grey:'gray',
     progressBarBlue:'#0373F3',
     unfinished:'#aaaaaa',
+    subHeading:'#B1B1B1',
 }
 
 //sizes used
 export const Sizes = {
-    iconSize: 28,
+    iconSize: 25,
     fonstSize:20
 }
