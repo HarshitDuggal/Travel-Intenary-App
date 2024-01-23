@@ -4,7 +4,7 @@ Setup the application:-
 3.Run npm install
 4.Run npm react-native start.
 ------- And you are good good go -------
-Trello board :- https://trello.com/b/ExUXArTX/travel-itenary-shelf 
+Trello board :- https://trello.com/b/ExUXArTX/travel-itenary
 
 Here is a video below
 
